@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management System - Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="flex h-screen">
+    <div class="w-64 bg-blue-900 text-white flex flex-col p-5">
+      <h2 class="text-2xl font-bold mb-5">IMS Dashboard</h2>
+      <nav>
+        <a href="#" class="block py-2 px-3 rounded hover:bg-blue-700">Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded hover:bg-blue-700">Products</a>
+        <a href="#" class="block py-2 px-3 rounded hover:bg-blue-700">Orders</a>
+        <a href="#" class="block py-2 px-3 rounded hover:bg-blue-700">Reports</a>
+        <a href="#" class="block py-2 px-3 rounded hover:bg-blue-700">Settings</a>
+      </nav>
+    </div>
+
+    <div class="flex-1 p-6 overflow-y-auto">
+      <header class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
+        <button onclick="openModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add Product</button>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-white p-5 rounded-lg shadow">
+          <h3 class="text-lg text-gray-600">Total Products</h3>
+          <p class="text-3xl font-bold" id="total-products">0</p>
+        </div>
+        <div class="bg-white p-5 rounded-lg shadow">
+          <h3 class="text-lg text-gray-600">Low Stock</h3>
+          <p class="text-3xl font-bold" id="low-stock">0</p>
+        </div>
+        <div class="bg-white p-5 rounded-lg shadow">
+          <h3 class="text-lg text-gray-600">Orders Today</h3>
+          <p class="text-3xl font-bold" id="orders-today">0</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-lg shadow mb-6">
+        <h3 class="text-lg font-bold mb-3">Product List</h3>
+        <table class="w-full table-auto border-collapse border border-gray-300">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="border p-3">ID</th>
+              <th class="border p-3">Name</th>
+              <th class="border p-3">Category</th>
+              <th class="border p-3">Stock</th>
+              <th class="border p-3">Price</th>
+              <th class="border p-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="product-list"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="product-modal" class="fixed inset-0 hidden bg-gray-800 bg-opacity-50 flex justify-center items-center">
+    <div class="bg-white p-6 rounded-lg w-96">
+      <h2 id="modal-title" class="text-xl font-bold mb-4">Add Product</h2>
+      <input type="hidden" id="product-id">
+      <input type="text" id="product-name" class="w-full mb-3 p-2 border rounded" placeholder="Product Name">
+      <input type="text" id="product-category" class="w-full mb-3 p-2 border rounded" placeholder="Category">
+      <input type="number" id="product-stock" class="w-full mb-3 p-2 border rounded" placeholder="Stock">
+      <input type="number" id="product-price" class="w-full mb-3 p-2 border rounded" placeholder="Price">
+      <div class="flex justify-end">
+        <button onclick="closeModal()" class="bg-gray-600 text-white px-4 py-2 rounded mr-2">Cancel</button>
+        <button onclick="saveProduct()" class="bg-blue-600 text-white px-4 py-2 rounded">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
